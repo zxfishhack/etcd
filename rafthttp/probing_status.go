@@ -17,7 +17,7 @@ package rafthttp
 import (
 	"time"
 
-	"github.com/xiang90/probing"
+	"github.com/zxfishhack/probing"
 )
 
 var (

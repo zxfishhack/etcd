@@ -29,7 +29,7 @@ import (
 	"github.com/coreos/etcd/raftsnap"
 
 	"github.com/coreos/pkg/capnslog"
-	"github.com/xiang90/probing"
+	"github.com/zxfishhack/probing"
 	"golang.org/x/time/rate"
 )
 
@@ -143,6 +143,9 @@ func (t *Transport) Start() error {
 	t.remotes = make(map[types.ID]*remote)
 	t.peers = make(map[types.ID]Peer)
 	t.prober = probing.NewProber(t.pipelineRt)
+	t.prober.SetModify(func(req *http.Request) {
+		req.Header.Set("X-Etcd-Cluster-ID", t.ClusterID.String())
+	})
 
 	// If client didn't provide dial retry frequency, use the default
 	// (100ms backoff between attempts to create a new stream),

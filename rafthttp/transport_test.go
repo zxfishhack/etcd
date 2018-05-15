@@ -24,7 +24,7 @@ import (
 	"github.com/coreos/etcd/pkg/testutil"
 	"github.com/coreos/etcd/pkg/types"
 	"github.com/coreos/etcd/raft/raftpb"
-	"github.com/xiang90/probing"
+	"github.com/zxfishhack/probing"
 )
 
 // TestTransportSend tests that transport can send messages using correct
